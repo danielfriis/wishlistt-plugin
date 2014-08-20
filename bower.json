@@ -17,6 +17,6 @@
     "bower_components"
   ],
   "dependencies": {
-    "requirejs": "~2.1.14"
+    "almond": "~0.2.9"
   }
 }
