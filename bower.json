@@ -1,0 +1,22 @@
+{
+  "name": "Wishlistt-Plugin",
+  "version": "0.0.0",
+  "homepage": "http://www.wishlistt.com/",
+  "authors": [
+    "BIT BLUEPRINT <hello@bitblueprint.com>"
+  ],
+  "description": "The plugin that makes Wishlistt.com available through a sidebar on external webshops.",
+  "main": "app/main.coffee",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.14"
+  }
+}
