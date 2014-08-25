@@ -48,8 +48,11 @@ module.exports = (grunt) ->
                     wrap: true
 
                     paths:
-                        # jquery: 'libs/jquery'
                         text: 'bower_components/requirejs-text/text'
+                        zepto: 'bower_components/zepto/zepto'
+                    shim:
+                        zepto:
+                            exports: '$'
 
         watch:
             files: [

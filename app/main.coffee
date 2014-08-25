@@ -1,9 +1,11 @@
 require [
-    'Config'
-    'text!view/widget.html'
-    ], (Config, widgetTemplate) ->
+    'Config',
+    'text!view/widget.html',
+    'zepto',
+    'extractor'], (Config, widgetTemplate, $, extractor) ->
+        $ ->
+            console.log 'Init Wishlistt plugin'
 
-        init = ->
             # check that config doesn't have errors
             if Config.errors.length > 0
                 for err in Config.errors
@@ -13,16 +15,15 @@ require [
                         console.log err
                 return
 
-            # create a new DOM node from the template
-            element = document.createElement 'div'
-            element.innerHTML = widgetTemplate
+            values =
+                title: $(Config.selectors.title).text()
+                price: $(Config.selectors.price).text()
+                picture: $(Config.selectors.picture).attr 'src'
 
-            # the template has a single root node so we unwrap the
-            # created DOM node and add the root node
-            widgetElement = element.firstChild
-            document.body.insertBefore widgetElement
+            widgetElement = $ widgetTemplate
 
-        if document.readyState in ['complete', 'loaded']
-            init()
-        else
-            document.addEventListener 'DOMContentLoaded', init
+            widgetElement.find('.title').text values.title
+            widgetElement.find('.price').text values.price
+            widgetElement.find('.picture img').attr src: values.picture
+
+            $(document.body).append widgetElement

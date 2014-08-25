@@ -1,14 +1,41 @@
 <div id="wishlistt-plugin-widget">
     <style type="text/css">
         #wishlistt-plugin-widget {
-            border: 1px solid black;
             position: absolute;
             right: 0;
+            top: 10%;
+
+            border: 1px solid black;
 
             width: 150px;
-            height: 40px;
+            height: 80px;
+        }
+
+        #wishlistt-plugin-widget h4,
+        #wishlistt-plugin-widget p,
+        #wishlistt-plugin-widget img {
+            margin: 0;
+        }
+
+        #wishlistt-plugin-widget img {
+            position: absolute;
+            left: 0;
+            top: 5;
+        }
+
+        #wishlistt-plugin-widget .info {
+            margin-left: 60px;
         }
     </style>
 
-    Wishlistt
+    <h4>Wishlistt</h4>
+
+    <div class="picture">
+        <img src="" width="50"/>
+    </div>
+
+    <div class="info">
+        <h4 class="title"></h4>
+        <p class="price"></p>
+    </div>
 </div>
