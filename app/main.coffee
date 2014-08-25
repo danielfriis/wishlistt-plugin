@@ -40,6 +40,7 @@ require [
                 complete: -> iframeContainer.remove()
 
         iframeElement.on 'load', ->
+            iframeElement.get(0).contentWindow.postMessage 'I\'m from parent', '*'
             iframeWrapper.animate right: '0px'
 
         # create widget
@@ -54,3 +55,6 @@ require [
 
 
         $(document.body).append widgetElement
+
+        window.onmessage = (e) ->
+            console.log('Message from iframe side: ' + e.data)
