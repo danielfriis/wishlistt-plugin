@@ -47,7 +47,7 @@ module.exports = (grunt) ->
                     # stubModules: ['text']
                     wrap: true
 
-                    # paths:
+                    paths:
                         # jquery: 'libs/jquery'
                         text: 'bower_components/requirejs-text/text'
 
