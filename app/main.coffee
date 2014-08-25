@@ -1,29 +1,48 @@
 require [
-    'Config',
-    'text!view/widget.html',
     'zepto',
-    'extractor'], (Config, widgetTemplate, $, extractor) ->
-        $ ->
-            console.log 'Init Wishlistt plugin'
 
-            # check that config doesn't have errors
-            if Config.errors.length > 0
-                for err in Config.errors
-                    if typeof err is 'string'
-                        console.log "Wishlistt-plugin: #{err}"
-                    else
-                        console.log err
-                return
+    'Config',
+    'extractor',
 
-            values =
-                title: $(Config.selectors.title).text()
-                price: $(Config.selectors.price).text()
-                picture: $(Config.selectors.picture).attr 'src'
+    'text!view/widget.html',
+    'text!view/iframe.html',
 
-            widgetElement = $ widgetTemplate
+    'zeptoFx',
+], ($, Config, extractor, widgetTemplate, iframeTemplate) ->
+    $ ->
+        console.log 'Init Wishlistt plugin'
 
-            widgetElement.find('.title').text values.title
-            widgetElement.find('.price').text values.price
-            widgetElement.find('.picture img').attr src: values.picture
+        # check that config doesn't have errors
+        if Config.errors.length > 0
+            for err in Config.errors
+                if typeof err is 'string'
+                    console.log "Wishlistt-plugin: #{err}"
+                else
+                    console.log err
+            return
 
-            $(document.body).append widgetElement
+        values =
+            title: $(Config.selectors.title).text()
+            price: $(Config.selectors.price).text()
+            picture: $(Config.selectors.picture).attr 'src'
+
+        # create iframe
+        iframeContainer = $ iframeTemplate
+        iframeElement = iframeContainer.find('iframe')
+
+        iframeContainer.on 'click', '.close', ->
+            iframeElement.animate right: '-350px'
+
+        iframeElement.on 'load', ->
+            $(this).animate right: '0px'
+
+        # create widget
+        widgetElement = $ widgetTemplate
+        widgetElement.find('.title').text values.title
+        widgetElement.find('.price').text values.price
+        widgetElement.find('.picture img').attr src: values.picture
+
+        widgetElement.on 'click', ->
+            $(document.body).append iframeContainer
+
+        $(document.body).append widgetElement

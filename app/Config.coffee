@@ -1,4 +1,4 @@
-define [], ->
+define ['zepto'], ($) ->
 
     class Config
 
@@ -8,11 +8,11 @@ define [], ->
             @errors = []
 
             # get wishlistt-plugin script tag
-            scriptElement = document.querySelector('script[data-wishlistt]')
+            scriptElement = $('script[data-wishlistt]')
 
             # try to load JSON
             try
-                CONFIG = JSON.parse scriptElement.text
+                CONFIG = JSON.parse scriptElement.text()
             catch error
                 @errors.push 'failed to parse config JSON:'
                 @errors.push error

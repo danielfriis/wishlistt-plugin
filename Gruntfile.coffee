@@ -7,6 +7,7 @@ module.exports = (grunt) ->
             src: 'app'
             view: 'view'
             lib: 'bower_components'
+            vendor: 'vendor'
             dest: 'dist'
             build: '<%= paths.dest %>/build'
             www: 'www'
@@ -23,6 +24,7 @@ module.exports = (grunt) ->
                     # { expand: true, src: ['<%= paths.tmpl %>/**'], dest: '<%= paths.dest %>' }
                     # { expand: true, src: ['<%= paths.css %>/**'], dest: '<%= paths.dest %>' }
                     { expand: true, src: [ '<%= paths.lib %>/**' ], dest: '<%= paths.dest %>' }
+                    { expand: true, src: [ '<%= paths.vendor %>/**' ], dest: '<%= paths.dest %>' }
                 ]
 
         coffee:
@@ -48,11 +50,13 @@ module.exports = (grunt) ->
                     wrap: true
 
                     paths:
-                        text: 'bower_components/requirejs-text/text'
-                        zepto: 'bower_components/zepto/zepto'
+                        text: '<%= paths.lib %>/requirejs-text/text'
+                        zepto: '<%= paths.lib %>/zepto/zepto'
+                        zeptoFx: '<%= paths.vendor %>/zepto-fx'
                     shim:
                         zepto:
                             exports: '$'
+                        zeptoFx: [ 'zepto' ]
 
         watch:
             files: [
