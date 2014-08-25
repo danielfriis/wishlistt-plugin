@@ -36,7 +36,7 @@ module.exports = (grunt) ->
                 options:
                     baseUrl: '<%= paths.dest %>'
 
-                    out: '<%= paths.build %>/wishlist.js'
+                    out: '<%= paths.build %>/wishlistt.js'
                     optimize: 'none' # uglify2
 
                     name: '<%= paths.lib %>/almond/almond'
@@ -45,7 +45,7 @@ module.exports = (grunt) ->
                     # stubModules: ['text']
                     wrap: true
 
-                    paths:
+                    # paths:
                         # jquery: 'libs/jquery'
                         # text: 'libs/text'
 
