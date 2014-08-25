@@ -1,8 +1,20 @@
-require ['test'], (Test) ->
+require ['text!view/widget.html'], (widgetTemplate) ->
+    init = ->
+        console.log 'Init Wishlistt plugin'
 
-    # Test.hello()
+        scriptElement = document.querySelector('script[data-main="wishlist"]')
+        CONFIG = JSON.parse(scriptElement.text)
 
-    console.log 'Init'
+        # create a new DOM node from the template
+        element = document.createElement 'div'
+        element.innerHTML = widgetTemplate
 
-    scriptElement = document.querySelector('script[data-main="wishlist"]')
-    CONFIG = JSON.parse(scriptElement.text)
+        # the template has a single root node so we unwrap the
+        # created DOM node and add the root node
+        widgetElement = element.firstChild
+        document.body.insertBefore widgetElement
+
+    if document.readyState in ['complete', 'loaded']
+        init()
+    else
+        document.addEventListener 'DOMContentLoaded', init

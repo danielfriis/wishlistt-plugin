@@ -5,6 +5,7 @@ module.exports = (grunt) ->
 
         paths:
             src: 'app'
+            view: 'view'
             lib: 'bower_components'
             dest: 'dist'
             build: '<%= paths.dest %>/build'
@@ -18,6 +19,7 @@ module.exports = (grunt) ->
             dist:
                 files: [
                     { expand: true, cwd: '<%= paths.www %>', src: ['**'], dest: '<%= paths.dest %>' }
+                    { expand: true, cwd: '<%= paths.view %>', src: ['**'], dest: '<%= paths.dest %>/view' }
                     # { expand: true, src: ['<%= paths.tmpl %>/**'], dest: '<%= paths.dest %>' }
                     # { expand: true, src: ['<%= paths.css %>/**'], dest: '<%= paths.dest %>' }
                     { expand: true, src: [ '<%= paths.lib %>/**' ], dest: '<%= paths.dest %>' }
@@ -47,10 +49,14 @@ module.exports = (grunt) ->
 
                     # paths:
                         # jquery: 'libs/jquery'
-                        # text: 'libs/text'
+                        text: 'bower_components/requirejs-text/text'
 
         watch:
-            files: [ '<%= paths.src %>/**', '<%= paths.www %>/**' ]
+            files: [
+                '<%= paths.src %>/**',
+                '<%= paths.view %>/**',
+                '<%= paths.www %>/**',
+            ]
             tasks: [ 'build' ]
 
         connect:
