@@ -1,9 +1,24 @@
 require ['text!view/widget.html'], (widgetTemplate) ->
     init = ->
-        console.log 'Init Wishlistt plugin'
+        # get wishlistt-plugin script tag
+        scriptElement = document.querySelector('script[data-wishlistt]')
 
-        scriptElement = document.querySelector('script[data-main="wishlist"]')
-        CONFIG = JSON.parse(scriptElement.text)
+        # try to load JSON
+        try
+            CONFIG = JSON.parse(scriptElement.text)
+        catch error
+            console.log 'Wishlistt-plugin: failed to parse config JSON:'
+            console.log error
+            return
+
+        # check config contains required fields
+        missingOpt = false
+        for opt in ['title', 'picture', 'price']
+            unless CONFIG[opt]
+                console.log("Wishlistt-plugin: #{opt} xpath not set in config")
+                missingOpt = true
+
+        return if missingOpt
 
         # create a new DOM node from the template
         element = document.createElement 'div'
