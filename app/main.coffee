@@ -6,9 +6,10 @@ require [
 
     'text!view/widget.html',
     'text!view/iframe.html',
+    'text!view/spinner.html',
 
     'zeptoFx',
-], ($, Config, extractor, widgetTemplate, iframeTemplate) ->
+], ($, Config, extractor, widgetTemplate, iframeTemplate, spinnerTemplate) ->
     $ ->
         console.log 'Init Wishlistt plugin'
 
@@ -32,6 +33,7 @@ require [
         iframeElement = iframeWrapper.find('iframe')
 
         iframeContainer.on 'click', '.close', ->
+            widgetElement.removeClass 'loading'
             iframeWrapper.animate { right: '-350px' },
                 duration: 500,
                 easing: 'ease-in-out'
@@ -48,5 +50,7 @@ require [
 
         widgetElement.on 'click', ->
             $(document.body).append iframeContainer
+            $(this).addClass 'loading'
+
 
         $(document.body).append widgetElement
