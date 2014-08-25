@@ -28,13 +28,17 @@ require [
 
         # create iframe
         iframeContainer = $ iframeTemplate
-        iframeElement = iframeContainer.find('iframe')
+        iframeWrapper = iframeContainer.find('.container')
+        iframeElement = iframeWrapper.find('iframe')
 
         iframeContainer.on 'click', '.close', ->
-            iframeElement.animate right: '-350px'
+            iframeWrapper.animate { right: '-350px' },
+                duration: 500,
+                easing: 'ease-in-out'
+                complete: -> iframeContainer.remove()
 
         iframeElement.on 'load', ->
-            $(this).animate right: '0px'
+            iframeWrapper.animate right: '0px'
 
         # create widget
         widgetElement = $ widgetTemplate

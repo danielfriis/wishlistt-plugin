@@ -1,12 +1,25 @@
 <div id="wishlistt-iframe">
     <style type="text/css">
-     #wishlistt-iframe iframe {
+     #wishlistt-iframe {
 
        position: absolute;
-       right: -350px;
+       right: 0;
        top: 0;
        height: 100%;
        width: 350px;
+       overflow: hidden;
+     }
+
+     #wishlistt-iframe .container {
+       position: absolute;
+       right: -350px;
+       widht: 100%;
+       height: 100%;
+     }
+
+     #wishlistt-iframe .container iframe {
+       widht: 100%;
+       height: 100%;
      }
 
      #wishlistt-iframe .close {
@@ -17,8 +30,9 @@
        font-size: 30px;
      }
     </style>
+    <div class="container">
+        <iframe src="http://wishlistt.com" frameBorder="0"></iframe>
 
-    <iframe src="http://wishlistt.com" frameBorder="0"></iframe>
-
-    <div class="close">X</div>
+        <div class="close">X</div>
+    </div>
 </div>
