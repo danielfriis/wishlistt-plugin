@@ -1,2 +1,0 @@
-define ['zepto'], ($) ->
-    (config) ->

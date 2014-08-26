@@ -2,13 +2,12 @@ require [
     'zepto',
 
     'Config',
-    'extractor',
 
     'text!view/widget.html',
     'text!view/iframe.html',
 
     'zeptoFx',
-], ($, Config, extractor, widgetTemplate, iframeTemplate) ->
+], ($, Config, widgetTemplate, iframeTemplate) ->
     $ ->
         console.log 'Init Wishlistt plugin'
 
