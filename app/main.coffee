@@ -20,10 +20,17 @@ require [
                     console.log err
             return
 
+        # abort if we're not on a product page
+        isProductPage = $(Config.selectors.title).length > 0
+        return unless isProductPage
+
         values =
             title: $(Config.selectors.title).text()
             price: $(Config.selectors.price).text()
-            picture: document.URL + $(Config.selectors.picture).attr('src')
+            picture: $(Config.selectors.picture).attr('src')
+
+        if values.picture.match 'https?://' is -1
+            values.picture = document.URL + values.picture
 
         # create iframe
         iframeContainer = $ iframeTemplate
@@ -50,7 +57,6 @@ require [
         widgetElement.on 'click', ->
             $(document.body).append iframeContainer
             $(this).addClass 'loading'
-
 
         $(document.body).append widgetElement
 
