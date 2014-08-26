@@ -6,10 +6,9 @@ require [
 
     'text!view/widget.html',
     'text!view/iframe.html',
-    'text!view/spinner.html',
 
     'zeptoFx',
-], ($, Config, extractor, widgetTemplate, iframeTemplate, spinnerTemplate) ->
+], ($, Config, extractor, widgetTemplate, iframeTemplate) ->
     $ ->
         console.log 'Init Wishlistt plugin'
 
@@ -25,7 +24,7 @@ require [
         values =
             title: $(Config.selectors.title).text()
             price: $(Config.selectors.price).text()
-            picture: $(Config.selectors.picture).attr 'src'
+            picture: document.URL + $(Config.selectors.picture).attr('src')
 
         # create iframe
         iframeContainer = $ iframeTemplate
@@ -40,7 +39,7 @@ require [
                 complete: -> iframeContainer.remove()
 
         iframeElement.on 'load', ->
-            iframeElement.get(0).contentWindow.postMessage 'I\'m from parent', '*'
+            iframeElement.get(0).contentWindow.postMessage values, '*'
             iframeWrapper.animate right: '0px'
 
         # create widget
