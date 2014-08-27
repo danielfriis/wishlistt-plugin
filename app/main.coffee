@@ -38,7 +38,7 @@ require [
         iframeWrapper = iframeContainer.find('.container')
         iframeElement = iframeWrapper.find('iframe')
 
-        iframeContainer.on 'click', '.close', ->
+        iframeContainer.on 'click', '.close, .background', ->
             iframeWrapper.animate { right: '-350px' },
                 duration: 500,
                 easing: 'ease-in-out'
