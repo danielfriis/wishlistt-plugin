@@ -7,6 +7,7 @@ require [
     'text!view/iframe.html',
 
     'zeptoFx',
+    'zeptoFxMethods',
 ], ($, Config, widgetTemplate, iframeTemplate) ->
     $ ->
         console.log 'Init Wishlistt plugin'
@@ -24,6 +25,7 @@ require [
         isProductPage = $(Config.selectors.title).length > 0
         return unless isProductPage
 
+        # extract values
         values =
             title: $(Config.selectors.title).text()
             price: $(Config.selectors.price).text()
@@ -39,6 +41,7 @@ require [
         iframeElement = iframeWrapper.find('iframe')
 
         iframeContainer.on 'click', '.wishlistt-close, .wishlistt-background', ->
+            iframeBackground.fadeTo 300, 0
             iframeWrapper.animate { right: '-350px' },
                 duration: 500,
                 easing: 'ease-in-out'
@@ -53,6 +56,7 @@ require [
 
         widgetElement.on 'click', ->
             $(document.body).append iframeContainer
+            iframeBackground.fadeTo 300, .5
             iframeWrapper.animate { right: '0px' },
                 duration: 500,
                 easing: 'ease-in-out'

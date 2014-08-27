@@ -53,6 +53,7 @@ module.exports = (grunt) ->
                         text: '<%= paths.lib %>/requirejs-text/text'
                         zepto: '<%= paths.lib %>/zepto/zepto'
                         zeptoFx: '<%= paths.vendor %>/zepto-fx'
+                        zeptoFxMethods: '<%= paths.vendor %>/zepto-fx-methods'
                     shim:
                         zepto:
                             exports: '$'
