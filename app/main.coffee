@@ -34,11 +34,11 @@ require [
 
         # create iframe
         iframeContainer = $ iframeTemplate
+        iframeBackground = iframeContainer.find('.background')
         iframeWrapper = iframeContainer.find('.container')
         iframeElement = iframeWrapper.find('iframe')
 
         iframeContainer.on 'click', '.close', ->
-            widgetElement.removeClass 'loading'
             iframeWrapper.animate { right: '-350px' },
                 duration: 500,
                 easing: 'ease-in-out'
@@ -46,17 +46,16 @@ require [
 
         iframeElement.on 'load', ->
             iframeElement.get(0).contentWindow.postMessage values, '*'
-            iframeWrapper.animate right: '0px'
 
         # create widget
         widgetElement = $ widgetTemplate
-        widgetElement.find('.title').text values.title
-        widgetElement.find('.price').text values.price
         widgetElement.find('.picture img').attr src: values.picture
 
         widgetElement.on 'click', ->
             $(document.body).append iframeContainer
-            $(this).addClass 'loading'
+            iframeWrapper.animate { right: '0px' },
+                duration: 500,
+                easing: 'ease-in-out'
 
         $(document.body).append widgetElement
 
