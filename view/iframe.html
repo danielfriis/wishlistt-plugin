@@ -10,7 +10,7 @@
        width: 100%;
      }
 
-     #wishlistt-iframe .container {
+     #wishlistt-iframe .wishlistt-container {
        position: absolute;
        top: 0;
        right: -350px;
@@ -18,7 +18,7 @@
        height: 100%;
      }
 
-     #wishlistt-iframe .container iframe {
+     #wishlistt-iframe .wishlistt-container iframe {
        position: absolute;
        right: 0;
 
@@ -26,7 +26,7 @@
        height: 100%;
      }
 
-     #wishlistt-iframe .close {
+     #wishlistt-iframe .wishlistt-close {
        position: absolute;
        right: 330px;
        top: 5px;
@@ -40,7 +40,7 @@
        cursor: pointer;
      }
 
-     #wishlistt-iframe .background {
+     #wishlistt-iframe .wishlistt-background {
        position: absolute;
 
        width: 100%;
@@ -50,17 +50,17 @@
        opacity: 0.5;
      }
 
-     #wishlistt-iframe .sidebar .spinner {
+     #wishlistt-iframe .wishlistt-sidebar .wishlistt-spinner {
        position: absolute;
        right: 50%;
        top: 50%;
      }
 
-     #wishlistt-iframe .sidebar .spinner img {
+     #wishlistt-iframe .wishlistt-sidebar .wishlistt-spinner img {
        margin: -15px 0 0 -15px;
      }
 
-     #wishlistt-iframe .sidebar {
+     #wishlistt-iframe .wishlistt-sidebar {
        position: absolute;
        right: 0;
        top: 0;
@@ -72,17 +72,17 @@
      }
     </style>
 
-    <div class="background"></div>
+    <div class="wishlistt-background"></div>
 
-    <div class="container">
-        <div class="sidebar">
-            <div class="spinner">
+    <div class="wishlistt-container">
+        <div class="wishlistt-sidebar">
+            <div class="wishlistt-spinner">
                 <img src="http://localhost:3000/assets/spinner.gif"/>
             </div>
         </div>
 
         <iframe src="http://localhost:3000/plugin?pp=disable" frameBorder="0"></iframe>
 
-        <div class="close">X</div>
+        <div class="wishlistt-close">X</div>
     </div>
 </div>

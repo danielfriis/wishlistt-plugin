@@ -34,11 +34,11 @@ require [
 
         # create iframe
         iframeContainer = $ iframeTemplate
-        iframeBackground = iframeContainer.find('.background')
-        iframeWrapper = iframeContainer.find('.container')
+        iframeBackground = iframeContainer.find('.wishlistt-background')
+        iframeWrapper = iframeContainer.find('.wishlistt-container')
         iframeElement = iframeWrapper.find('iframe')
 
-        iframeContainer.on 'click', '.close, .background', ->
+        iframeContainer.on 'click', '.wishlistt-close, .wishlistt-background', ->
             iframeWrapper.animate { right: '-350px' },
                 duration: 500,
                 easing: 'ease-in-out'
@@ -49,7 +49,7 @@ require [
 
         # create widget
         widgetElement = $ widgetTemplate
-        widgetElement.find('.picture img').attr src: values.picture
+        widgetElement.find('.wishlistt-picture img').attr src: values.picture
 
         widgetElement.on 'click', ->
             $(document.body).append iframeContainer
