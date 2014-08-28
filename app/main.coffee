@@ -10,8 +10,6 @@ require [
     'zeptoFxMethods',
 ], ($, Config, widgetTemplate, iframeTemplate) ->
     $ ->
-        console.log 'Init Wishlistt plugin'
-
         # check that config doesn't have errors
         if Config.errors.length > 0
             for err in Config.errors
@@ -51,7 +49,6 @@ require [
             resolved_url
 
         if not values.picture.match 'https?://'
-            console.log "relative path"
             values.picture = resolve values.picture, document.URL
 
         # create iframe
@@ -82,6 +79,3 @@ require [
                 easing: 'ease-in-out'
 
         $(document.body).append widgetElement
-
-        window.onmessage = (e) ->
-            console.log('Message from iframe side: ' + e.data)
