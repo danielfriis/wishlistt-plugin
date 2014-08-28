@@ -1,4 +1,8 @@
+parseArgs = require 'minimist'
+
 module.exports = (grunt) ->
+    args = parseArgs process.argv.slice(2)
+    optimize = args.o or args.optimize
 
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
@@ -41,7 +45,7 @@ module.exports = (grunt) ->
                     baseUrl: '<%= paths.dest %>'
 
                     out: '<%= paths.build %>/wishlistt.js'
-                    optimize: 'none' # uglify2
+                    optimize: if optimize then 'uglify2' else 'none'
 
                     name: '<%= paths.lib %>/almond/almond'
                     include: ['main']
