@@ -52,6 +52,10 @@ require [
 
         # create widget
         widgetElement = $ widgetTemplate
+        # placement according to config
+        widgetElement.get(0).style[Config.placement.side] = '0'
+        widgetElement.get(0).style.top = Config.placement.top
+        # set product image
         widgetElement.find('.wishlistt-picture img').attr src: values.picture
 
         widgetElement.on 'click', ->

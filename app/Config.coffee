@@ -29,8 +29,21 @@ define ['zepto'], ($) ->
                 unless CONFIG['selectors'][opt]
                     @errors.push "#{opt} selector not set in config"
 
+            placement = side: 'right', top: '20%'
+            if CONFIG.placement
+                side = CONFIG.placement.side
+                if side not in ['right', 'left']
+                    @errors.push 'invalid placement.side value'
+                else placement.side = side
+
+                top = CONFIG.placement.top
+                if not top.match '[0-9]+.*'
+                    @errors.push 'invalid placement.top value'
+                else placement.top = top
+
             # set config properties
             @selectorType = CONFIG.selectorType || 'css'
             @selectors = CONFIG.selectors
+            @placement = placement
 
     new Config()
