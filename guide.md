@@ -15,7 +15,7 @@ To install the plugin, simply add the following script tag to any page where the
         "selectors": {
             "title": ".title",
             "price": ".price",
-            "picture": ".picture"
+            "image": ".image"
         },
         "placement": {
             "side": "right",
@@ -31,7 +31,7 @@ The following options are
 
 - `"title"`: The CSS selector of the title of the product, e.g. `".title"`
 - `"price"`: The CSS selector of the price of the product, e.g. `".price"`
-- `"picture"`: The CSS selector an image tag of the product, e.g. `".product img"` or `".picture"`
+- `"image"`: The CSS selector an image tag of the product, e.g. `".image img"` or `".image"`
 
 ###### `placement`
 

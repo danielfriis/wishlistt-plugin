@@ -25,7 +25,7 @@ define ['zepto'], ($) ->
                     return
 
             # and for selectors
-            for opt in ['title', 'picture', 'price']
+            for opt in ['title', 'image', 'price']
                 unless CONFIG['selectors'][opt]
                     @errors.push "#{opt} selector not set in config"
 

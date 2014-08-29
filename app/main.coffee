@@ -31,11 +31,11 @@ require [
         values =
             title: $(Config.selectors.title).text()
             price: $(Config.selectors.price).text()
-            picture: $(Config.selectors.picture).attr('src')
+            image: $(Config.selectors.image).attr('src')
             link: document.URL
 
-        if not values.picture.match 'https?://'
-            values.picture = urlResolve values.picture, document.URL
+        if not values.image.match 'https?://'
+            values.image = urlResolve values.image, document.URL
 
         # create iframe
         iframeContainer = $ iframeTemplate
@@ -65,7 +65,7 @@ require [
             top: Config.placement.top
 
         # set product image
-        widgetElement.find('.wishlistt-picture img').attr src: values.picture
+        widgetElement.find('.wishlistt-image img').attr src: values.image
 
         widgetElement.on 'click', ->
             $(document.body).append iframeContainer
