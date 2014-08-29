@@ -51,7 +51,8 @@ require [
                 complete: -> iframeContainer.remove()
 
         iframeElement.on 'load', ->
-            iframeElement.get(0).contentWindow.postMessage values, '*'
+            payload = { wish: values, colors: Config.colors }
+            iframeElement.get(0).contentWindow.postMessage payload, '*'
 
         # create widget
         widgetElement = $ widgetTemplate
