@@ -52,7 +52,7 @@ require [
 
         iframeElement.on 'load', ->
             payload = { wish: values, colors: Config.colors }
-            iframeElement.get(0).contentWindow.postMessage payload, '*'
+            iframeElement.get(0).contentWindow.postMessage JSON.stringify(payload), '*'
 
         # create widget
         widgetElement = $ widgetTemplate
