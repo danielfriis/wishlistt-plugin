@@ -41,9 +41,18 @@ define ['zepto'], ($) ->
                     @errors.push 'invalid placement.top value'
                 else placement.top = top
 
+            colors = foreground: 'white', background: 'black'
+            if CONFIG.colors
+                foreground = CONFIG.colors.foreground
+                if foreground then colors.foreground = foreground
+
+                background = CONFIG.colors.background
+                if background then colors.background = background
+
             # set config properties
             @selectorType = CONFIG.selectorType || 'css'
             @selectors = CONFIG.selectors
             @placement = placement
+            @colors = colors
 
     new Config()
