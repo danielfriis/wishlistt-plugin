@@ -9,8 +9,11 @@ require [
 
     'zeptoFx',
     'zeptoFxMethods',
+    'zeptoDetect',
 ], ($, Config, urlResolve, widgetTemplate, iframeTemplate) ->
     $ ->
+        return if $.os.phone or $.os.wp
+
         # check that config doesn't have errors
         if Config.errors.length > 0
             for err in Config.errors
