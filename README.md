@@ -23,7 +23,7 @@ To install the plugin, simply add the following script tag to any page where the
         },
         "color": {
             "foreground": "white",
-            "background": "black"
+            "background": "blue"
         }
     }
     </script>
@@ -44,5 +44,5 @@ The following options are
 
 ###### `color`
 
-- `"foreground"`: The foreground color, i.e. the color of the text, of the widget, header and buttons.
-- `"background"`: The background color of the widget, header and buttons. If the same as the foreground color, the text will not be visible.
+- `"foreground"`: The foreground color, i.e. the color of the text, of the widget, header and buttons. Default is white.
+- `"background"`: The background color of the widget, header and buttons. If the same as the foreground color, the text will not be visible. Default is black.
