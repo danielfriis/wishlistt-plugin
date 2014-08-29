@@ -30,7 +30,7 @@ require [
         # extract values
         values =
             title: $(Config.selectors.title).text()
-            price: $(Config.selectors.price).text()
+            price: "#{$(Config.selectors.currency).text() || ''} #{$(Config.selectors.price).text()}"
             image: $(Config.selectors.image).attr('src')
             link: document.URL
 

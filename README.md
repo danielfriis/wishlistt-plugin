@@ -35,6 +35,7 @@ The following options are
 
 - `"title"`: The CSS selector of the title of the product, e.g. `".title"`
 - `"price"`: The CSS selector of the price of the product, e.g. `".price"`
+- `"currency"`: Optional: the CSS selector of the price currency, e.g. `".currency"`
 - `"image"`: The CSS selector an image tag of the product, e.g. `".image img"` or `".image"`
 
 ###### `placement`
