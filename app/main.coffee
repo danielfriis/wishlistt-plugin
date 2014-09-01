@@ -24,7 +24,9 @@ require [
             return
 
         # abort if we're not on a product page
-        isProductPage = $(Config.selectors.title).length > 0
+        isProductPage = $(Config.selectors.title).length > 0 and
+            $(Config.selectors.image).length > 0
+
         return unless isProductPage
 
         # extract values
