@@ -58,12 +58,10 @@ module.exports = (grunt) ->
                         zepto: '<%= paths.lib %>/zepto/zepto'
                         zeptoFx: '<%= paths.vendor %>/zepto-fx'
                         zeptoFxMethods: '<%= paths.vendor %>/zepto-fx-methods'
-                        zeptoDetect: '<%= paths.vendor %>/zepto-detect'
                     shim:
                         zepto:
-                            exports: '$'
+                            exports: 'Zepto'
                         zeptoFx: [ 'zepto' ]
-                        zeptoDetect: [ 'zepto' ]
 
         watch:
             files: [

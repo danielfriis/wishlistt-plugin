@@ -3,16 +3,16 @@ require [
 
     'Config',
     'urlResolve',
+    'detect',
 
     'text!view/widget.html',
     'text!view/iframe.html',
 
     'zeptoFx',
     'zeptoFxMethods',
-    'zeptoDetect',
-], ($, Config, urlResolve, widgetTemplate, iframeTemplate) ->
+], ($, Config, urlResolve, detect, widgetTemplate, iframeTemplate) ->
     $ ->
-        return if $.os.phone or $.os.wp
+        return if detect.os.phone or detect.os.wp
 
         # check that config doesn't have errors
         if Config.errors.length > 0
