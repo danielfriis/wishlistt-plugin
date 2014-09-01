@@ -58,18 +58,15 @@ require [
 
         # create widget
         widgetElement = $ widgetTemplate
+        widgetElement.on 'load', ->
+            payload = { wish: values, colors: Config.colors }
+            widgetElement.get(0).contentWindow.postMessage JSON.stringify(payload), '*'
 
         # placement and colors according to config
         widgetElement.css Config.placement.side, '0'
-        widgetElement.css
-            backgroundColor: Config.colors.background
-            color: Config.colors.foreground
-            top: Config.placement.top
+        widgetElement.css top: Config.placement.top
 
-        # set product image
-        widgetElement.find('.wishlistt-image img').attr src: values.image
-
-        widgetElement.on 'click', ->
+        showPlugin = ->
             $(document.body).append iframeContainer
             iframeBackground.fadeTo 300, .5
             iframeWrapper.animate { right: '0px' },
@@ -77,3 +74,6 @@ require [
                 easing: 'ease-in-out'
 
         $(document.body).append widgetElement
+
+        window.onmessage = (e) ->
+            if e.data is 'show_iframe' then showPlugin()
