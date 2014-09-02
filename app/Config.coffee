@@ -2,8 +2,6 @@ define ['zepto'], ($) ->
 
     class Config
 
-        REQUIRED: ['selectors']
-
         constructor: ->
             @errors = []
 
@@ -17,17 +15,6 @@ define ['zepto'], ($) ->
                 @errors.push 'failed to parse config JSON:'
                 @errors.push error
                 return
-
-            # check config contains required fields
-            for opt in @REQUIRED
-                unless CONFIG[opt]
-                    @errors.push "#{opt} not set in config"
-                    return
-
-            # and for selectors
-            for opt in ['title', 'image', 'price']
-                unless CONFIG['selectors'][opt]
-                    @errors.push "#{opt} selector not set in config"
 
             placement = side: 'right', top: '20%'
             if CONFIG.placement
@@ -50,8 +37,15 @@ define ['zepto'], ($) ->
                 if background then colors.background = background
 
             # set config properties
-            @selectorType = CONFIG.selectorType || 'css'
-            @selectors = CONFIG.selectors
+            @selectorType = CONFIG.selectorType || 'og'
+            @selectors = CONFIG.selectors || {}
+            # set defaults
+            @selectors.price ?= 'meta[itemprop="price"]'
+            @selectors.currency ?= 'meta[itemprop="priceCurrency"]'
+            @selectors.image ?= 'meta[property="og:image"]'
+            @selectors.title ?= 'meta[property="og:title"]'
+            @selectors.link ?= 'meta[property="og:url"]'
+
             @placement = placement
             @colors = colors
 

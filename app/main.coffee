@@ -23,18 +23,26 @@ require [
                     console.log err
             return
 
-        # abort if we're not on a product page
-        isProductPage = $(Config.selectors.title).length > 0 and
-            $(Config.selectors.image).length > 0
-
-        return unless isProductPage
-
         # extract values
         values =
-            title: $(Config.selectors.title).text()
-            price: "#{$(Config.selectors.currency).text() || ''} #{$(Config.selectors.price).text()}"
-            image: $(Config.selectors.image).attr('src')
-            link: document.URL
+            if Config.selectorType is 'css'
+                title: $(Config.selectors.title).text()
+                price: "#{$(Config.selectors.currency).text() || ''} #{$(Config.selectors.price).text()}"
+                image: $(Config.selectors.image).attr('src')
+                link: $(Config.selectors.link).text()
+            else if Config.selectorType in ['opengraph', 'og']
+                title: $(Config.selectors.title).attr('content')
+                price: "#{$(Config.selectors.currency).attr('content') || ''} #{$(Config.selectors.price).attr('content')}"
+                image: $(Config.selectors.image).attr('content')
+                link: $(Config.selectors.link).attr('content')
+
+        # set if not
+        if values.link.length is 0 or not values.link?
+            values.link = document.URL
+
+        # abort if we're not on a product page
+        isProductPage = values.title and values.image
+        return unless isProductPage
 
         if not values.image.match 'https?://'
             values.image = urlResolve values.image, document.URL

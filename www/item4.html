@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <meta property="og:url" content="http://localhost:8000/item4.html">
+        <meta property="og:title" content="Window">
+        <meta property="og:image" content="http://www.threeriverswindowcompany.com/pics/traco%20pics%20009.jpg">
+
+        <title>Wishlistt-Plugin</title>
+
+        <style>
+            .content {
+            margin: 0 auto;
+            width: 60%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <h1>Wishlistt-Plugin class-based product info</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <ul>
+                <li><a href="/item1.html">Item 1</a></li>
+                <li><a href="/item2.html">Item 2</a></li>
+                <li><a href="/item3.html">Item 3</a></li>
+            </ul>
+            <div>
+                <h2 class="title">Window</h2>
+                <meta itemprop="price" content="24.50">
+                <meta itemprop="priceCurrency" content="DKK">
+                <span class="price">kr. 24,50</span>
+                <img class="image" src="http://www.threeriverswindowcompany.com/pics/traco%20pics%20009.jpg" alt=""/>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="build/wishlistt.js" data-wishlistt async="async">
+            {
+            "placement": {
+            "side": "right",
+            "top": "20%"
+            }
+            }
+        </script>
+    </body>
+</html>
