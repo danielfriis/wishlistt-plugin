@@ -37,7 +37,7 @@ require [
                 link: $(Config.selectors.link).attr('content')
 
         # set if not
-        if values.link.length is 0 or not values.link?
+        if not values.link? or values.link.length is 0
             values.link = document.URL
 
         # abort if we're not on a product page
